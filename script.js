@@ -63,3 +63,22 @@ document.querySelectorAll('header nav ul li a').forEach(anchor => {
     });
   });
 });
+
+// Hamburger Menu Toggle
+const hamburger = document.getElementById('hamburger');
+const navMenu = document.getElementById('nav-menu');
+
+hamburger.addEventListener('click', () => {
+  navMenu.classList.toggle('active');
+  hamburger.classList.toggle('toggle');
+});
+
+// Close menu on link click
+document.querySelectorAll('#nav-menu a').forEach(link => {
+  link.addEventListener('click', () => {
+    if(navMenu.classList.contains('active')){
+      navMenu.classList.remove('active');
+      hamburger.classList.remove('toggle');
+    }
+  });
+});
