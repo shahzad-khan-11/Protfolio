@@ -37,26 +37,45 @@ header .container {
   justify-content: space-between;
   align-items: center;
   padding: 15px 30px;
+  flex-wrap: wrap;
+  position: relative;
 }
 
-header .logo {
-  font-size: 1.5rem;
-  font-weight: bold;
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+  margin-right: 15px;
 }
 
-header nav ul {
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: #333;
+  transition: all 0.3s;
+}
+
+.dark-mode .hamburger span {
+  background: #eee;
+}
+
+/* Navigation */
+nav ul {
   list-style: none;
   display: flex;
   gap: 25px;
+  flex-wrap: wrap;
 }
 
-header nav ul li a {
+nav ul li a {
   text-decoration: none;
   font-weight: 500;
   transition: color 0.3s;
 }
 
-header nav ul li a:hover {
+nav ul li a:hover {
   color: #f39c12;
 }
 
@@ -65,6 +84,7 @@ header nav ul li a:hover {
   border: none;
   font-size: 1.2rem;
   cursor: pointer;
+  margin-top: 10px;
 }
 
 /* Hero Section */
@@ -72,7 +92,7 @@ header nav ul li a:hover {
   background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://via.placeholder.com/1600x600') center/cover no-repeat;
   color: #fff;
   text-align: center;
-  padding: 150px 20px;
+  padding: 120px 20px;
 }
 
 #hero h2 span {
@@ -103,7 +123,7 @@ header nav ul li a:hover {
 
 /* Sections */
 section {
-  padding: 80px 20px;
+  padding: 60px 20px;
   text-align: center;
 }
 
@@ -231,6 +251,7 @@ form button:hover {
   display: flex;
   justify-content: center;
   gap: 20px;
+  flex-wrap: wrap;
 }
 
 .socials a {
@@ -246,11 +267,75 @@ footer {
   padding: 20px;
 }
 
-/* Dark mode */
 .dark-mode body {
   color: #eee;
 }
 
 .dark-mode footer {
   background: #111;
+}
+
+/* Responsive Hamburger & Logo */
+@media(max-width: 768px){
+  header .container {
+    justify-content: center; /* center logo */
+  }
+
+  .hamburger {
+    position: absolute;
+    left: 20px;
+    display: flex;
+  }
+
+  header nav {
+    position: absolute;
+    top: 65px;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.3s ease-out;
+  }
+
+  .dark-mode header nav {
+    background: #1c1c1c;
+  }
+
+  header nav ul {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  header nav ul li {
+    border-bottom: 1px solid #ccc;
+  }
+
+  header nav ul li a {
+    display: block;
+    padding: 15px;
+  }
+
+  nav.active {
+    max-height: 500px;
+  }
+}
+
+@media(max-width: 480px){
+  header .logo {
+    font-size: 1.2rem;
+  }
+
+  .btn {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+
+  section h2 {
+    font-size: 1.5rem;
+  }
+
+  .typing {
+    font-size: 1rem;
+  }
 }
